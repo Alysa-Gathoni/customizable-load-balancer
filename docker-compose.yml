@@ -1,0 +1,27 @@
+services:
+  loadbalancer:
+    build: ./loadbalancer
+    image: loadbalancer:latest
+    container_name: loadbalancer
+    ports:
+      - "5000:5000"          # only the LB is exposed to the host, per spec
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true          # required so it can spawn/stop sibling containers
+    networks:
+      net1:
+        aliases:
+          - loadbalancer
+    environment:
+      NETWORK_NAME: net1
+      SERVER_IMAGE: server:latest
+      N: "3"
+      NUM_SLOTS: "512"
+      NUM_VIRTUAL: "9"
+      HEARTBEAT_INTERVAL_SEC: "5"
+      HEARTBEAT_TIMEOUT_SEC: "2"
+
+networks:
+  net1:
+    name: net1               # force the actual docker network name to "net1"
+    driver: bridge
