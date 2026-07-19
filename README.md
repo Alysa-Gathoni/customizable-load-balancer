@@ -1,10 +1,12 @@
 # Customizable Load Balancer - Distributed Systems
 
 ## Group Members
-146510-Wanjiru Nicole Njeri
-170084-Eyoel Abraham
-159056-Marsa Fatma Omar
-167016-Macharia Alysa Gathoni
+| Student ID | Name |
+|------------|--------------------------|
+| 146510 | Wanjiru Nicole Njeri |
+| 170084 | Eyoel Abraham |
+| 159056 | Marsa Fatma Omar |
+| 167016 | Macharia Alysa Gathoni |
 
 ## Project Overview
 
