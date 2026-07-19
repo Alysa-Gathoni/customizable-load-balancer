@@ -1,4 +1,11 @@
-# Customizable Load Balancer — ICS 4104 Assignment 1
+# Customizable Load Balancer - Distributed Systems
+
+## Group Members
+146510-Wanjiru Nicole Njeri
+170084-Eyoel Abraham
+159056-Marsa Fatma Omar
+167016-Macharia Alysa Gathoni
+
 ## Project Overview
 
 This project implements a customizable load balancer for a distributed system using consistent hashing. The load balancer distributes incoming client requests across multiple replicated web servers while maintaining an approximately even load distribution. It also supports dynamic scaling through the addition and removal of server replicas, continuously monitors server health using heartbeat requests, and automatically replaces failed servers to maintain the configured number of replicas. The system is containerized using Docker and Docker Compose, making it easy to deploy and test in a distributed environment.
