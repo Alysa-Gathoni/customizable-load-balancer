@@ -1,0 +1,34 @@
+Server_6YSW0
+
+--- GET /rep (initial) ---
+status: 200
+{'message': {'N': 4, 'replicas': ['Server_6YSW0', 'Server_8UZVY', 'Server_D4XWJ', 'Server_SKP6T']}, 'status': 'successful'}
+
+--- GET /home (routed request) ---
+status: 200
+{'message': 'Hello from Server: Server_8UZVY', 'status': 'successful'}
+
+--- GET /nonexistent (should 400) ---
+status: 404
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+
+--- POST /add (n=2, named) ---
+status: 200
+{'message': {'N': 6, 'replicas': ['Server_6YSW0', 'Server_8UZVY', 'Server_D4XWJ', 'Server_SKP6T', 'TestA', 'TestB']}, 'status': 'successful'}
+
+--- DELETE /rm (n=1, named) ---
+status: 200
+{'message': {'N': 6, 'replicas': ['Server_6YSW0', 'Server_8UZVY', 'Server_D4XWJ', 'Server_SKP6T', 'TestB', 'Server_WX7V4']}, 'status': 'successful'}
+
+Simulating crash of 'Server_6YSW0' via `docker kill`...
+
+Recovered in 7.2 seconds.
+
+--- GET /rep (post-recovery) ---
+status: 200
+{'message': {'N': 6, 'replicas': ['Server_8UZVY', 'Server_D4XWJ', 'Server_SKP6T', 'TestB', 'Server_WX7V4', 'Server_WX4BP']}, 'status': 'successful'}
